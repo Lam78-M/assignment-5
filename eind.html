@@ -1,32 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-        <!-- Daisy Ui and Tailwind Css -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- font awesome -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-     <!-- Css link -->
-      <link rel="stylesheet" href="styles.css">
-      <!-- google fonts -->
-       <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
-<link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
-
-<style>
-    body{
-        background-color: #F8FAFC;
-      font-family: "Geist",sans-serif;
-    }
-
-</style>
-</head>
-<body >
-    <section>
+ <section>
         <!-- other section -->
         <div class="navbar bg-base-100 shadow-sm">
   <div class="flex-1">
@@ -137,7 +109,23 @@
 
 
           
-      </section>                  
-<script src="some.js"></script>
-</body>
-</html> 
+      </section>   
+
+
+      const loadIssues=()=>{
+    fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")  
+    .then(res=> res.json())
+    .then((json) => displayIssues(json.data))
+};
+const displayIssues=(Issues)=>{
+   const cardContainer = document.getElementById('card-container');
+   cardContainer.innerHTML='';
+   for(let Issue of Issues){
+   const btnDiv = document.createElement('div');
+   btnDiv.innerHTML= `
+    <button class="btn btn-primary px-9 ">All</button>
+   `
+   cardContainer.append(btnDiv);
+   }
+}
+loadIssues();

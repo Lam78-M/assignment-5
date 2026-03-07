@@ -1,3 +1,4 @@
+// login section
 document.getElementById('login-btn')
 .addEventListener('click',function(){
  
@@ -6,7 +7,7 @@ document.getElementById('login-btn')
     console.log(userName);
 
     const inputPin = document.getElementById('input-pin');
-    const pin =inputPin.value ;
+    const pin =inputPin.value;
     console.log(pin)
 
     if(userName == 'admin' && pin== 'admin123' ){
@@ -17,4 +18,6 @@ document.getElementById('login-btn')
         alert('Wrong username or password');
         return;
     }
-})
+});
+
+
