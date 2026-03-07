@@ -11,8 +11,74 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
      <!-- Css link -->
       <link rel="stylesheet" href="styles.css">
+      <!-- google fonts -->
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+  
+<style>
+    body{
+        font-family: "Geist",sans-serif;
+    }
+    *{
+   
+    }
+</style>
+   
 </head>
-<body>
+<body class="bg-base-200" >
+    <section class="min-h-screen max-w-xl bg-white mx-auto pt-15">
+      <div class="flex justify-center ">
+        <img src="./assets/github-logo.png" alt="">
+      </div>
+      <h2 class="font-bold text-[24px] text-[#1F2937] text-center mt-[20px]">GitHub Issues Tracker</h2>
+      <p class="text-[16px] text-[#64748B] text-center">Sign in to manage your issues</p>
+      <!-- login  -->
+
+<div class="">
+  <div class="flex items-center gap-3 my-15 px-15 justify-center">
+    <div class="text-center lg:text-left">
+     
+      
+    </div>
+    <div class="card bg-base-100 w-full max-w-sm shrink-0 ">
+      <div class="card-body">
+        <fieldset class="fieldset">
+          <label class="label font-bold text-[15px]">Username</label>
+          <input id="input-user" type="text" class="input" placeholder="Enter Username" />
+          <p class="text-[#4A00FF] text-[13px] mb-[5px]">Default: admin</p>
+          
+          <label class="label font-bold text-[15px]">Password</label>
+          <input id="input-pin" maxlength="8" minlength="8" type="password" class="input" placeholder="Enter Password" />
+           <p class="text-[#4A00FF] text-[13px] mb-[5px]">Default: admin123</p>
+          
+          <button id="login-btn" class="btn btn-primary mt-4 rounded-lg mx-auto block w-full">Sign In</button>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- hr -->
+   <div class="flex items-center gap-3 my-6 ">
+    <div class="h-px bg-gray-300 flex-1 opacity-50 ml-[90px]"></div>
+    <span class="text-sm text-gray-500 text-[15px]">OR</span>
+    <div class="h-px bg-gray-300 flex-1 opacity-50 mr-[90px]"></div>
+   </div>
+   <p class="text-center mt-[40px] mb-[10px]">Demo Credentials:</p>
+
+    <div class="bg-[#F8FAFC] px-10 py-6 w-[450px] mx-auto text-center rounded-lg">
+        <p class="font-bold"> Username : <span class="text-[#64748B] font-normal">admin</span></p>
+        <p class="font-bold"> Password : <span class="text-[#64748B] font-normal">admin123</span></p>
+    </div>
+
+    
+    </section>
+
+
+
+
+
+    <!-- JS link -->
     <script src="script.js"></script>
 </body>
 </html>
