@@ -6,6 +6,7 @@ const allBtn = document.getElementById("all-btn");
 const openBtn = document.getElementById("open-btn");
 const closedBtn = document.getElementById("closed-btn");
 const issueCount = document.getElementById("issue-count");
+const searchInput = document.getElementById('search-input');
 
 let allIssues = [];
 
@@ -35,12 +36,17 @@ issues.forEach(issue => {
 
 const card = document.createElement("div");
 
-card.className = "space-y-5 px-2 py-4 border";
+
+card.className = "space-y-5 px-2 py-4 shadow-md  rounded-lg  border-t-4 border-t-green-500";
 
 card.innerHTML = `
+<div >
+
   <div class="space-y-5 px-2 py-4">
+ 
+
       <div class="flex justify-between">
-        <img src="./assets/${issue.status === "open" ? "Open-Status.png" : "Closed-Status.png"}" alt="">
+        <img src="./assets/${issue.status === "open" ? "Open-Status.png" : "Closed- Status .png"}" alt="">
         <button class="text-red-500 bg-red-200 rounded-full px-6">${issue.priority}</button>
       </div>
       <p class="text-[20px] font-bold line-clamp-2">${issue.title}</p>
@@ -53,6 +59,7 @@ card.innerHTML = `
       <p class="text-[#64748B]">#${issue.id} by ${issue.author}</p>
       <p class="text-[#64748B]">${issue.date}</p>
     </div>
+</div>
 `;
 
 cardContainer.appendChild(card);
@@ -103,4 +110,30 @@ const closedIssues = allIssues.filter(issue => issue.status === "closed");
 displayIssues(closedIssues);
 setActiveButton(closedBtn);
 
+
 });
+//search event
+
+searchInput.addEventListener("keypress", function(e){
+
+if(e.key === "Enter"){
+
+const id = searchInput.value.trim();
+
+if(id !== ""){
+searchIssue(id);
+}
+
+}
+
+});
+
+
+// search
+async function searchIssue(id){
+  const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`)
+  const data = await res.json();
+  displayIssues([data.data]);
+}
+
+

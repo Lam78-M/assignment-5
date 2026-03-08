@@ -28,17 +28,17 @@
 <body >
     <section>
         <!-- other section -->
-        <div class="navbar bg-base-100 shadow-sm">
+        <div class="navbar bg-base-100 shadow-sm md:px-6 flex flex-col md:flex-row items-center justify-between gap-2">
   <div class="flex-1">
      <!-- img -->
  <div class="flex gap-2">
-            <img src="./assets/github-logo.png" class="w-[20px]" alt="">
-            <h2 class="font-bold">GitHub Issues Tracker</h2>
+            <img src="./assets/github-logo.png" class="w-[25px]" alt="">
+            <h2 class="font-bold text-lg md:text-xl">GitHub Issues Tracker</h2>
         </div>
 
   </div>
   <div class="flex gap-2">
-    <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+    <input id="search-input" type="text" placeholder="Search by ID" class="input input-bordered w-24 md:w-auto" />
    
      
         <div class="">
@@ -53,7 +53,7 @@
     </section>
  <!-- 3 buttons -->
     <section class=" w-[70%] mx-auto container mt-[30px] shadow-md py-6 px-6 bg-white">
-        <div class="flex gap-3" >
+        <div class="flex flex-col sm:flex-row gap-3 justify-start" >
 <button id="all-btn" class="btn  btn-primary px-9 ">All</button>
 <button id="open-btn" class="btn   px-7 shadow-sm ">Open</button>
 <button id="closed-btn" class="btn   px-7 shadow-sm">Closed</button>
@@ -61,8 +61,8 @@
         </div>
     </section>
     <!-- card section -->
-     <section class="w-[70%] mx-auto bg-white mt-[20px] px-6 py-6">
-        <div class="flex items-center justify-between gap-2">
+     <section class="w-[70%] mx-auto bg-white mt-[20px] px-6 py-6 ">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-2">
             <!-- left side -->
                <div class="flex items-center gap-3">
             <div class="bg-[#ECE4FF] px-3 py-3 rounded-full flex items-center justify-center">
@@ -92,49 +92,54 @@
      </section>
 
      <!-- card section --> 
-      <section  class="w-[70%] mx-auto bg-white mt-[2px]">
-          <div  id="card-container" class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-3 ">
-          <div class="space-y-5 px-2 py-4">
-                 <div class="flex justify-between">
-                <img src="./assets/Open-Status.png" alt="">
-                <button class="text-red-500 bg-red-200 rounded-full px-6">HIGH</button>
+               <section id="card-container" class="w-[70%]  mx-auto mt-2 bg-white   grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 ">
+  <div >
+    
+    <!-- Card 1 -->
+    <div class="bg-white border rounded-md p-4 flex flex-col justify-between gap-3 shadow-sm">
+      <div class="flex justify-between items-center">
+        <img src="./assets/Open-Status.png" alt="Open" class="w-6 h-6">
+        <button class="text-red-500 bg-red-200 px-4 py-1 rounded-full text-sm">HIGH</button>
+      </div>
+      <h3 class="font-bold text-lg line-clamp-2">Fix navigation menu on mobile devices</h3>
+      <p class="text-gray-500 text-sm line-clamp-2">The navigation menu doesn't collapse properly on mobile devices...</p>
+      <div class="flex gap-2 flex-wrap">
+        <button class="bg-red-200 text-red-500 px-3 py-1 rounded-full text-xs">BUG</button>
+        <button class="bg-orange-100 text-orange-500 px-3 py-1 rounded-full text-xs">HELP WANTED</button>
+      </div>
+      <hr class="opacity-20 my-2">
+      <div class="flex justify-between text-gray-500 text-xs">
+        <p>#1 by john_doe</p>
+        <p>1/15/2024</p>
+      </div>
+    </div>
 
-             </div>
-              <p class="text-[20px] font-bold line-clamp-2">Fix navigation menu on mobile devices</p>
-              <p class="text-[#64748B] line-clamp-2">The navigation menu doesn't collapseproperly on mobile devices...</p>
+    <!-- Card 2 -->
+    <div class="bg-white border rounded-md p-4 flex flex-col justify-between gap-3 shadow-sm">
+      <div class="flex justify-between items-center">
+        <img src="./assets/Closed-Status.png" alt="Closed" class="w-6 h-6">
+        <button class="text-red-500 bg-red-200 px-4 py-1 rounded-full text-sm">HIGH</button>
+      </div>
+      <h3 class="font-bold text-lg line-clamp-2">Fix navigation menu on mobile devices</h3>
+      <p class="text-gray-500 text-sm line-clamp-2">The navigation menu doesn't collapse properly on mobile devices...</p>
+      <div class="flex gap-2 flex-wrap">
+        <button class="bg-red-200 text-red-500 px-3 py-1 rounded-full text-xs">BUG</button>
+        <button class="bg-orange-100 text-orange-500 px-3 py-1 rounded-full text-xs">HELP WANTED</button>
+      </div>
+      <hr class="opacity-20 my-2">
+      <div class="flex justify-between text-gray-500 text-xs">
+        <p>#2 by john_doe</p>
+        <p>1/15/2024</p>
+      </div>
+    </div>
 
-       <div class="flex gap-2">
-        <button class="bg-red-200 text-red-500 px-4 rounded-full">BUG </button>
-        <button class="bg-orange-100 text-orange-500 px-7 rounded-full">HELP WANTED</button>
-       </div>
-       <hr class="opacity-11">
-       <p class="text-[#64748B]">#1by john_doe</p>
-       <p class="text-[#64748B]">1/15/2024</p>
+    <!-- Example: You can add more cards dynamically here -->
 
-          </div>
-          <div class="space-y-5 px-2 py-4">
-                 <div class="flex justify-between">
-                <img src="./assets/Closed- Status .png" alt="">
-                <button class="text-red-500 bg-red-200 rounded-full px-6">HIGH</button>
-
-             </div>
-              <p class="text-[20px] font-bold line-clamp-2">Fix navigation menu on mobile devices</p>
-              <p class="text-[#64748B] line-clamp-2">The navigation menu doesn't collapseproperly on mobile devices...</p>
-
-       <div class="flex gap-2">
-        <button class="bg-red-200 text-red-500 px-4 rounded-full">BUG </button>
-        <button class="bg-orange-100 text-orange-500 px-7 rounded-full">HELP WANTED</button>
-       </div>
-       <hr class="opacity-11">
-       <p class="text-[#64748B]">#1by john_doe</p>
-       <p class="text-[#64748B]">1/15/2024</p>
-
-          </div>
-          </div>
-
-
-          
-      </section>                  
+  </div>
+</section>
 <script src="some.js"></script>
 </body>
 </html>     
+
+
+
