@@ -23,6 +23,7 @@ async function loadIssues() {
 loadIssues();
 
 // Display function
+
 function displayIssues(issues) {
   cardContainer.innerHTML = "";
   issueCount.innerText = `${issues.length} Issues`;
@@ -32,30 +33,25 @@ function displayIssues(issues) {
     const borderColor = issue.status === "open" ? "border-t-green-500" : "border-t-purple-500";
 
     card.className = `space-y-5 px-2 py-4 shadow-md rounded-lg border-t-4 ${borderColor}`;
-card.innerHTML = `
-<div>
-  <div class="space-y-5 px-2 py-4">
-    <div class="flex justify-between">
-      <img src="./assets/${issue.status === "open" ? "Open-Status.png" : "Closed-Status.png"}" alt="">
-      <button class="text-red-500 bg-red-200 rounded-full px-6">${issue.priority}</button>
-    </div>
-
-    <p class="text-[20px] font-bold line-clamp-2">${issue.title}</p>
-    <p class="text-[#64748B] line-clamp-2">${issue.description}</p>
-
-    <div class="flex gap-2 flex-wrap">
-      ${issue.labels.map(label => `
-        <button class="bg-orange-100 text-orange-500 px-4 rounded-full">${label}</button>
-      `).join("")}
-    </div>
-
-    <hr class="opacity-20">
-
-    <p class="text-[#64748B]">#${issue.id} by ${issue.author}</p>
-    <p class="text-[#64748B]">${issue.updatedAt}</p>
-  </div>
-</div>
-`;
+    card.innerHTML = `
+      <div>
+        <div class="space-y-5 px-2 py-4">
+          <div class="flex justify-between">
+            <img src="./assets/${issue.status === "open" ? "Open-Status.png" : "Closed- Status .png"}" alt="">
+            <button class="text-red-500 bg-red-200 rounded-full px-6">${issue.priority}</button>
+          </div>
+          <p class="text-[20px] font-bold line-clamp-2">${issue.title}</p>
+          <p class="text-[#64748B] line-clamp-2">${issue.description}</p>
+          <div class="flex gap-2 flex-wrap">
+            <button class="bg-red-200 text-red-500 px-4 rounded-full">${issue.type}</button>
+            <button class="bg-orange-100 text-orange-500 px-7 rounded-full">HELP WANTED</button>
+          </div>
+          <hr class="opacity-20">
+          <p class="text-[#64748B]">#${issue.id} by ${issue.author}</p>
+          <p class="text-[#64748B]">${issue.date}</p>
+        </div>
+      </div>
+    `;
     cardContainer.appendChild(card);
   });
 }
