@@ -5,6 +5,7 @@ const cardContainer = document.getElementById("card-container");
 const allBtn = document.getElementById("all-btn");
 const openBtn = document.getElementById("open-btn");
 const closedBtn = document.getElementById("closed-btn");
+const issueCount = document.getElementById("issue-count");
 
 let allIssues = [];
 
@@ -25,6 +26,10 @@ loadIssues();
 function displayIssues(issues){
 
 cardContainer.innerHTML = "";
+
+
+// issue count change
+issueCount.innerText = issues.length + " Issues";
 
 issues.forEach(issue => {
 
@@ -56,11 +61,23 @@ cardContainer.appendChild(card);
 
 }
 
+//btn working
+
+function setActiveButton(activeBtn){
+
+allBtn.classList.remove("btn-primary");
+openBtn.classList.remove("btn-primary");
+closedBtn.classList.remove("btn-primary");
+
+activeBtn.classList.add("btn-primary");
+
+}
 
 // All button
 allBtn.addEventListener("click", function(){
 
 displayIssues(allIssues);
+setActiveButton(allBtn);
 
 });
 
@@ -72,6 +89,9 @@ const openIssues = allIssues.filter(issue => issue.status === "open");
 
 displayIssues(openIssues);
 
+setActiveButton(openBtn);
+
+
 });
 
 
@@ -81,5 +101,6 @@ closedBtn.addEventListener("click", function(){
 const closedIssues = allIssues.filter(issue => issue.status === "closed");
 
 displayIssues(closedIssues);
+setActiveButton(closedBtn);
 
 });
