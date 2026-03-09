@@ -43,8 +43,8 @@ const displayIssueDetails =(issue)=>{
         <p class="text-[#64748B]">22/02/2026</p>
       </div>
       <div class="mt-[15px] flex gap-2">
-        <button class="bg-red-200 text-red-500 px-3 py-1 rounded-full text-xs">BUG</button>
-        <button class="bg-orange-100 text-orange-500 px-3 py-1 rounded-full text-xs">HELP WANTED</button>
+        <button class="flex items-center gap-1  bg-red-200 text-red-500 px-2 rounded-full text-xs"><img  class="w-[14px]" src="assets/Vector (2).png">BUG</button>
+        <button class="flex items-center gap-1   bg-orange-100 text-orange-500 px-3 py-1 rounded-full text-xs"><img  class="w-[14px]" src="assets/Vector (1).png">HELP WANTED</button>
       </div>
     </div>
 
@@ -52,12 +52,12 @@ const displayIssueDetails =(issue)=>{
       The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.
     </p>
 
-    <div class="flex justify-between mt-4">
+    <div class="flex justify-between mt-4 bg-[#dee4ec] px-2 py-4 rounded-md">
       <div>
         <p class="text-[#64748B]">Assignee:</p>
         <p>Fahim Ahmed</p>
       </div>
-      <div class=mr-[150px]>
+      <div class=mr-[130px]>
         <p class="text-[#64748B]">Priority :</p>
         <button class="bg-red-500 px-3 rounded-full text-white">HIGH</button>
       </div>
@@ -89,13 +89,17 @@ function displayIssues(issues) {
         <div onclick="loadIssueDetail(${issue.id})" class="space-y-5 px-2 py-4">
           <div class="flex justify-between">
             <img src="./assets/${issue.status === "open" ? "Open-Status.png" : "Closed- Status .png"}" alt="">
-            <button  class="text-red-500 bg-red-200 rounded-full px-6">${issue.priority}</button>
+            <button  class="text-red-500 bg-red-200 rounded-full px-6 ">${issue.priority}</button>
           </div>
           <p class="text-[20px] font-bold line-clamp-2">${issue.title}</p>
           <p class="text-[#64748B] line-clamp-2">${issue.description}</p>
           <div class="flex gap-2 flex-wrap">
-            <button class="bg-red-200 text-red-500 px-4 rounded-full">${issue.type}</button>
-            <button class="bg-orange-100 text-orange-500 px-7 rounded-full">HELP WANTED</button>
+          
+           
+           
+            <button  class="flex items-center gap-1  bg-red-200 text-red-500 px-2 rounded-full"><img  class="w-[14px]" src="assets/Vector (2).png"> ${issue.type}</button>
+         
+            <button class="flex items-center gap-1    bg-orange-100 text-orange-500 px-3 rounded-full"><img  class="w-[14px]" src="assets/Vector (1).png">HELP WANTED</button>
           </div>
           <hr class="opacity-20">
           <p class="text-[#64748B]">#${issue.id} by ${issue.author}</p>
