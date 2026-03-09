@@ -14,7 +14,7 @@
 
     if(userName == 'admin' && pin== 'admin123' ){
         alert('Login Success');
-        window.location.replace('/home.html');
+        window.location.href('/home.html');
     }
     else{
         alert('Wrong username or password');
