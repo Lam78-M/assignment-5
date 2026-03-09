@@ -52,18 +52,20 @@ const displayIssueDetails =(issue)=>{
   <div>
   <div class="flex justify-start gap-4 text-center items-center">
   <button class="px-3 bg-green-500 rounded-full text-white font-normal">Opened</button>
+        <div class="w-1 h-1 bg-[#64748B] rounded-full"></div>
         <p class="text-[#64748B]">${issue.author}</p>
+        <div class="w-1 h-1 bg-[#64748B] rounded-full"></div>
         <p class="text-[#64748B]">${issue.updatedAt}</p>
   </div>
   <div class="mt-[15px] flex gap-2">
-  <button class="flex items-center gap-1  bg-red-200 text-red-500 px-2 rounded-full text-xs"><img  class="w-[14px]" src="assets/Vector (2).png">${issue.labels?.[0] || ""}</button>
-  <button class="flex items-center gap-1   bg-orange-100 text-orange-500 px-3 py-1 rounded-full text-xs"><img  class="w-[14px]" src="assets/Vector (1).png">${issue.labels?.[1] || ""}</button>
+  <button class="flex items-center gap-1  bg-red-200 text-red-500 px-2 rounded-full text-xs"><img  class="w-[14px]" src="assets/Vector (2).png">${(issue.labels?.[0] || "").toUpperCase()}</button>
+  <button class="flex items-center gap-1   bg-orange-100 text-orange-500 px-3 py-1 rounded-full text-xs"><img  class="w-[14px]" src="assets/Vector (1).png">${(issue.labels?.[1] || "").toUpperCase()}</button>
   </div>
   </div>
         <p class="line-clamp-2 text-[#64748B] mt-2">
         ${issue.title}
         </p>
-  <div class="flex justify-between mt-4 bg-[#e0e4e8] px-2 py-4 rounded-md">
+  <div class="flex justify-between mt-4 bg-[#f7f7f8] px-2 py-4 rounded-md">
   <div>
         <p class="text-[#64748B]">Assignee :</p>
         <p class="text-[#000205]">${issue.assignee}</p>
@@ -103,8 +105,8 @@ function displayIssues(issues) {
           <p class="text-[20px] font-bold line-clamp-2">${issue.title}</p>
           <p class="text-[#64748B] line-clamp-2">${issue.description}</p>
   <div class="flex gap-2 flex-wrap">
-  <button  class="flex items-center gap-1  bg-red-200 text-red-500 px-2 rounded-full"><img  class="w-[14px]" src="assets/Vector (2).png">${issue.labels?.[0] || ""}</button>
-  <button class="flex items-center gap-1    bg-orange-100 text-orange-500 px-3 rounded-full"><img  class="w-[14px]" src="assets/Vector (1).png">${issue.labels?.[1] || ""}</button>
+  <button  class="flex items-center gap-1  bg-red-200 text-red-500 px-2 rounded-full"><img  class="w-[14px]" src="assets/Vector (2).png">${(issue.labels?.[0] || "").toUpperCase()}</button>
+  <button class="flex items-center gap-1    bg-orange-100 text-orange-500 px-3 rounded-full"><img  class="w-[14px]" src="assets/Vector (1).png">${(issue.labels?.[1] || "").toUpperCase()}</button>
   </div>
           <hr class="opacity-20">
           <p class="text-[#64748B]">#${issue.assignee} by ${issue.author}</p>
