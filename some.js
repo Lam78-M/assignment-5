@@ -35,31 +35,31 @@ const displayIssueDetails =(issue)=>{
   const detailIssue = document.getElementById('issue-container');
   detailIssue.innerHTML = '';
   detailIssue.innerHTML =   ` 
-  <h3 class="text-[25px] font-bold">Fix broken image uploads</h3>
+  <h3 class="text-[25px] font-bold">${issue.title}</h3>
     <div>
       <div class="flex justify-start gap-4 text-center items-center">
         <button class="px-3 bg-green-500 rounded-full text-white font-normal">Opened</button>
-        <p class="text-[#64748B]">Opened by Fahim Ahmed</p>
-        <p class="text-[#64748B]">22/02/2026</p>
+        <p class="text-[#64748B]">${issue.author}</p>
+        <p class="text-[#64748B]">${issue.updatedAt}</p>
       </div>
       <div class="mt-[15px] flex gap-2">
-        <button class="flex items-center gap-1  bg-red-200 text-red-500 px-2 rounded-full text-xs"><img  class="w-[14px]" src="assets/Vector (2).png">BUG</button>
-        <button class="flex items-center gap-1   bg-orange-100 text-orange-500 px-3 py-1 rounded-full text-xs"><img  class="w-[14px]" src="assets/Vector (1).png">HELP WANTED</button>
+        <button class="flex items-center gap-1  bg-red-200 text-red-500 px-2 rounded-full text-xs"><img  class="w-[14px]" src="assets/Vector (2).png">${issue.labels?.[0] || ""}</button>
+        <button class="flex items-center gap-1   bg-orange-100 text-orange-500 px-3 py-1 rounded-full text-xs"><img  class="w-[14px]" src="assets/Vector (1).png">${issue.labels?.[1] || ""}</button>
       </div>
     </div>
 
     <p class="line-clamp-2 text-[#64748B] mt-2">
-      The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.
+      ${issue.title}
     </p>
 
-    <div class="flex justify-between mt-4 bg-[#dee4ec] px-2 py-4 rounded-md">
+    <div class="flex justify-between mt-4 bg-[#e0e4e8] px-2 py-4 rounded-md">
       <div>
-        <p class="text-[#64748B]">Assignee:</p>
-        <p>Fahim Ahmed</p>
+        <p class="text-[#64748B]">Assignee :</p>
+        <p class="text-[#000205]">${issue.assignee}</p>
       </div>
       <div class=mr-[130px]>
         <p class="text-[#64748B]">Priority :</p>
-        <button class="bg-red-500 px-3 rounded-full text-white">HIGH</button>
+        <button class="bg-red-500 px-3 rounded-full text-white">${issue.priority}</button>
       </div>
     </div>
 
@@ -84,6 +84,8 @@ function displayIssues(issues) {
     const borderColor = issue.status === "open" ? "border-t-green-500" : "border-t-purple-500";
 
     card.className = `space-y-5 px-2 py-4 shadow-md rounded-lg border-t-4 ${borderColor}`;
+
+
     card.innerHTML = `
       <div>
         <div onclick="loadIssueDetail(${issue.id})" class="space-y-5 px-2 py-4">
@@ -97,13 +99,13 @@ function displayIssues(issues) {
           
            
            
-            <button  class="flex items-center gap-1  bg-red-200 text-red-500 px-2 rounded-full"><img  class="w-[14px]" src="assets/Vector (2).png"> ${issue.type}</button>
+            <button  class="flex items-center gap-1  bg-red-200 text-red-500 px-2 rounded-full"><img  class="w-[14px]" src="assets/Vector (2).png">${issue.labels?.[0] || ""}</button>
          
-            <button class="flex items-center gap-1    bg-orange-100 text-orange-500 px-3 rounded-full"><img  class="w-[14px]" src="assets/Vector (1).png">HELP WANTED</button>
+            <button class="flex items-center gap-1    bg-orange-100 text-orange-500 px-3 rounded-full"><img  class="w-[14px]" src="assets/Vector (1).png">${issue.labels?.[1] || ""}</button>
           </div>
           <hr class="opacity-20">
-          <p class="text-[#64748B]">#${issue.id} by ${issue.author}</p>
-          <p class="text-[#64748B]">${issue.date}</p>
+          <p class="text-[#64748B]">#${issue.assignee} by ${issue.author}</p>
+          <p class="text-[#64748B]">${issue.createdAt}</p>
         </div>
       </div>
     `;
