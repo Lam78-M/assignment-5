@@ -1,6 +1,8 @@
-// login section
-document.getElementById('login-btn')
-.addEventListener('click',function(){
+// login section--------------------
+
+
+   document.getElementById('login-btn')
+   .addEventListener('click',function(){
  
     const userInput = document.getElementById('input-user');
     const userName = userInput.value
