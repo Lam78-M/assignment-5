@@ -35,42 +35,40 @@ const displayIssueDetails =(issue)=>{
   const detailIssue = document.getElementById('issue-container');
   detailIssue.innerHTML = '';
   detailIssue.innerHTML =   ` 
-  <h3 class="text-[25px] font-bold">${issue.title}</h3>
+  <h3 class="text-[25px] font-bold">Fix broken image uploads</h3>
+    <div>
+      <div class="flex justify-start gap-4 text-center items-center">
+        <button class="px-3 bg-green-500 rounded-full text-white font-normal">Opened</button>
+        <p class="text-[#64748B]">Opened by Fahim Ahmed</p>
+        <p class="text-[#64748B]">22/02/2026</p>
+      </div>
+      <div class="mt-[15px] flex gap-2">
+        <button class="bg-red-200 text-red-500 px-3 py-1 rounded-full text-xs">BUG</button>
+        <button class="bg-orange-100 text-orange-500 px-3 py-1 rounded-full text-xs">HELP WANTED</button>
+      </div>
+    </div>
 
+    <p class="line-clamp-2 text-[#64748B] mt-2">
+      The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.
+    </p>
+
+    <div class="flex justify-between mt-4">
       <div>
-        <div class="flex justify-start gap-4 text-center items-center mb-3">
-          <button class="px-3 bg-green-500 rounded-full text-white font-normal">${issue.status}</button>
-          <p class="text-[#64748B]">Opened by ${issue.openedBy}</p>
-          <p class="text-[#64748B]">${issue.date}</p>
-        </div>
-
-        <div class="mt-[15px] flex gap-2">
-          ${issue.labels.map(label => `
-            <button class="px-3 py-1 rounded-full text-xs" style="background:${label.bg || '#eee'}; color:${label.color || '#000'}">
-              ${label.name}
-            </button>
-          `).join('')}
-        </div>
+        <p class="text-[#64748B]">Assignee:</p>
+        <p>Fahim Ahmed</p>
       </div>
-
-      <p class="line-clamp-2 text-[#64748B] mt-2">${issue.description}</p>
-
-      <div class="flex justify-between mt-4">
-        <div class="mr-[150px]">
-          <p class="text-[#64748B]">Assignee:</p>
-          <p>${issue.assignee}</p>
-        </div>
-        <div>
-          <p class="text-[#64748B]">Priority :</p>
-          <button class="bg-red-500 px-3 rounded-full text-white">${issue.priority}</button>
-        </div>
+      <div class=mr-[150px]>
+        <p class="text-[#64748B]">Priority :</p>
+        <button class="bg-red-500 px-3 rounded-full text-white">HIGH</button>
       </div>
+    </div>
 
-      <div class="modal-action mt-4">
-        <form method="dialog">
-          <button class="btn btn-primary">Close</button>
-        </form>
-      </div>
+    <div class="modal-action mt-4">
+      <form method="dialog">
+        <button class="btn btn-primary">Close</button>
+      </form>
+    </div>
+  </div>
   `
   document.getElementById('my_modal_1').showModal()
 
