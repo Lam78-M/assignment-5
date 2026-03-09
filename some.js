@@ -5,10 +5,23 @@ const closedBtn = document.getElementById("closed-btn");
 const issueCount = document.getElementById("issue-count");
 const searchInput = document.getElementById('search-input');
 const newIssueBtn = document.getElementById('new-issue-btn');
+const loaderOverlay = document.getElementById("loader-overlay");
+
 
 let allIssues = [];
 
 // Load all issues
+
+function showLoader() {
+  loaderOverlay.classList.remove("hidden");
+  cardContainer.classList.add("hidden"); // hide cards
+}
+
+function hideLoader() {
+  loaderOverlay.classList.add("hidden");
+  cardContainer.classList.remove("hidden"); // show cards
+}
+
 async function loadIssues() {
   try {
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
@@ -23,6 +36,8 @@ async function loadIssues() {
 loadIssues();
 
 // Display function
+
+
 const loadIssueDetail =async (id) =>{
   const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
 
@@ -122,18 +137,24 @@ function setActiveButton(activeBtn){
 allBtn.addEventListener("click", () => {
   displayIssues(allIssues);
   setActiveButton(allBtn);
+    showLoader();
+  setTimeout(() => { displayIssues(allIssues); hideLoader(); }, 300);
 });
 
 openBtn.addEventListener("click", () => {
   const openIssues = allIssues.filter(issue => issue.status === "open");
   displayIssues(openIssues);
   setActiveButton(openBtn);
+   showLoader();
+  setTimeout(() => { displayIssues(allIssues.filter(i => i.status==="open")); hideLoader(); }, 300);
 });
 
 closedBtn.addEventListener("click", () => {
   const closedIssues = allIssues.filter(issue => issue.status === "closed");
   displayIssues(closedIssues);
   setActiveButton(closedBtn);
+  showLoader();
+  setTimeout(() => { displayIssues(allIssues.filter(i => i.status==="closed")); hideLoader(); }, 300);
 });
 
 // Search input
@@ -154,11 +175,15 @@ searchInput.addEventListener("input", () => {
 async function searchIssues(query) {
   try {
     const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${query}`);
-    if(!res.ok) return;
+    if (!res.ok) {
+      displayIssues([]); // যদি সার্চ ফেইল করে, 0 রেজাল্ট দেখাও
+      return;
+    }
     const data = await res.json();
     displayIssues(data.data || []);
-  } catch(err){
+  } catch (err) {
     console.error("Search failed:", err);
+    displayIssues([]); // যদি ফেচ ব্যর্থ হয়, 0 রেজাল্ট দেখাও
   }
 }
 
