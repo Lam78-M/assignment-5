@@ -23,6 +23,59 @@ async function loadIssues() {
 loadIssues();
 
 // Display function
+const loadIssueDetail =async (id) =>{
+  const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
+
+  const res = await fetch(url);
+  const details = await res.json();
+  displayIssueDetails(details.data);
+};
+const displayIssueDetails =(issue)=>{
+  console.log(issue);
+  const detailIssue = document.getElementById('issue-container');
+  detailIssue.innerHTML = '';
+  detailIssue.innerHTML =   ` 
+  <h3 class="text-[25px] font-bold">${issue.title}</h3>
+
+      <div>
+        <div class="flex justify-start gap-4 text-center items-center mb-3">
+          <button class="px-3 bg-green-500 rounded-full text-white font-normal">${issue.status}</button>
+          <p class="text-[#64748B]">Opened by ${issue.openedBy}</p>
+          <p class="text-[#64748B]">${issue.date}</p>
+        </div>
+
+        <div class="mt-[15px] flex gap-2">
+          ${issue.labels.map(label => `
+            <button class="px-3 py-1 rounded-full text-xs" style="background:${label.bg || '#eee'}; color:${label.color || '#000'}">
+              ${label.name}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+
+      <p class="line-clamp-2 text-[#64748B] mt-2">${issue.description}</p>
+
+      <div class="flex justify-between mt-4">
+        <div class="mr-[150px]">
+          <p class="text-[#64748B]">Assignee:</p>
+          <p>${issue.assignee}</p>
+        </div>
+        <div>
+          <p class="text-[#64748B]">Priority :</p>
+          <button class="bg-red-500 px-3 rounded-full text-white">${issue.priority}</button>
+        </div>
+      </div>
+
+      <div class="modal-action mt-4">
+        <form method="dialog">
+          <button class="btn btn-primary">Close</button>
+        </form>
+      </div>
+  `
+  document.getElementById('my_modal_1').showModal()
+
+}
+
 
 function displayIssues(issues) {
   cardContainer.innerHTML = "";
@@ -35,10 +88,10 @@ function displayIssues(issues) {
     card.className = `space-y-5 px-2 py-4 shadow-md rounded-lg border-t-4 ${borderColor}`;
     card.innerHTML = `
       <div>
-        <div class="space-y-5 px-2 py-4">
+        <div onclick="loadIssueDetail(${issue.id})" class="space-y-5 px-2 py-4">
           <div class="flex justify-between">
             <img src="./assets/${issue.status === "open" ? "Open-Status.png" : "Closed- Status .png"}" alt="">
-            <button class="text-red-500 bg-red-200 rounded-full px-6">${issue.priority}</button>
+            <button  class="text-red-500 bg-red-200 rounded-full px-6">${issue.priority}</button>
           </div>
           <p class="text-[20px] font-bold line-clamp-2">${issue.title}</p>
           <p class="text-[#64748B] line-clamp-2">${issue.description}</p>
