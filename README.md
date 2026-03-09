@@ -7,7 +7,8 @@ Here is the difference between var, let and cosnt :
 
    example:   ```console.log(name);  
                  var name = "Ayat";
-                 var name = "Rahim"; ```
+                 var name = "Rahim";
+                  ```
 
 2) let was introduced javascript ES6
    It is a block-scoped, it works only inside ({ }) 
@@ -16,7 +17,8 @@ Here is the difference between var, let and cosnt :
    example:   ``` let b = 20;
                  let b = 25;        // error, cannot re-declare
                  b = 30;            // update allowed
-                 console.log(b); ``` 
+                 console.log(b); 
+                 ``` 
    
 3) cosnt it's also block scoped.
    no re-declaration, update: value can not change,
@@ -25,7 +27,8 @@ Here is the difference between var, let and cosnt :
    example:   ```const c = 50;
                  const c = 60;      // error, cannot re-declare
                  c = 70;            // error, cannot update
-                 console.log(c);  ```
+                 console.log(c); 
+                  ```
 
 Quick conclusion : 🎗️ let use when variable value will change.
                    🎗️ const use for constants / values that never change.
@@ -63,7 +66,8 @@ Quick conclusion : 🎗️ let use when variable value will change.
                  let squares = numbers.map(num => num * num);
 
                  console.log(squares);  // [1, 4, 9, 16]
-                 console.log(numbers);  // [1, 2, 3, 4] (original array unchanged) ```   
+                 console.log(numbers);  // [1, 2, 3, 4] (original array unchanged)
+                  ```   
 
 2) filter() method: Creates a new array containing elements that pass a certain condition.
                     Returns:  new array with filtered elements.
@@ -114,4 +118,10 @@ Good signs: ```🎗️shorter and clean syntax,
   - 5️⃣ What are template literals?       
 
   Template litrals are a new way to write strigns in javascript
-  It introduced in ES6 and it's allowed expressions, multi-line strings, and easier string formatting.    
+  It introduced in ES6 and it's allowed expressions, multi-line strings, and easier string formatting.   
+ 
+    ```example: 
+              let message = `This is line 1
+              This is line 2
+              This is line 3`;
+              console.log(message); ```
